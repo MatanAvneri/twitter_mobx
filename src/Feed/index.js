@@ -3,7 +3,8 @@ import {observer} from 'mobx-react'
 import Tweet from '../Tweet'
 import './Feed.css'
 
-const Feed = observer(class Feed extends Component {
+@observer
+class Feed extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -58,6 +59,6 @@ const Feed = observer(class Feed extends Component {
       </div>
     )
   }
-})
+}
 
 export default Feed

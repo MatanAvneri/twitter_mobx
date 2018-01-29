@@ -1,22 +1,17 @@
-import {observable, computed, extendObservable} from 'mobx'
+import {observable, computed} from 'mobx'
 
 class TweetsStore {
-  tweets = observable([])
-
-  constructor () {
-    extendObservable(this, {
-      allTweets: computed(function() {
-        return this.tweets.sort((a, b) => b.date - a.date)
-      })
-    })
-
-  }
+  @observable tweets = []
 
   addTweet (tweet) {
     this.tweets.push({
       date: (new Date()).getTime(),
       ...tweet
     })
+  }
+
+  @computed get allTweets () {
+    return this.tweets.sort((a, b) => b.date - a.date)
   }
 }
 
